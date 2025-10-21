@@ -1,0 +1,155 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #3b82f6, #9333ea, #ec4899);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  overflow: hidden;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Efek blur background */
+.background .circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.3;
+  filter: blur(60px);
+}
+.c1 {
+  width: 300px; height: 300px;
+  background: #22d3ee;
+  top: 10%; left: -100px;
+  animation: float 6s ease-in-out infinite;
+}
+.c2 {
+  width: 400px; height: 400px;
+  background: #facc15;
+  bottom: -120px; right: -100px;
+  animation: float 8s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Kartu utama */
+.card {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 30px 40px;
+  text-align: center;
+  z-index: 1;
+  max-width: 360px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateY(60px);
+  filter: blur(10px);
+  transition: all 0.8s ease;
+}
+
+/* Saat animasi aktif */
+.card.active {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Avatar + efek bounce */
+.avatar img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  margin-bottom: 15px;
+  transform: scale(0);
+  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.avatar img.active {
+  transform: scale(1);
+}
+
+/* Teks dan tombol muncul berurutan */
+.subtitle, .links, .socials {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.subtitle.active, .links.active, .socials.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.subtitle { transition-delay: 0.2s; }
+.links { transition-delay: 0.4s; }
+.socials { transition-delay: 0.6s; }
+
+/* Tombol */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.btn {
+  text-decoration: none;
+  font-weight: 600;
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.linkedin { background: #0a66c2; }
+.github { background: #171515; }
+.instagram { background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af); }
+.spotify { background: #1DB954; }
+.tiktok { background: #000; border: 2px solid #ff0050; }
+.gmail { background: #ea4335; }
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+/* Sosial ikon */
+.socials {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.icon {
+  text-decoration: none;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  padding: 10px;
+  color: white;
+  transition: 0.3s;
+}
+.icon:hover {
+  background: rgba(255,255,255,0.3);
+  transform: translateY(-4px);
+}
+
+/* 🌟 Hanya aktif di layar kecil (HP) */
+@media (max-width: 600px) {
+  body {
+    flex-direction: column;
+    padding: 20px;
+  }
+}
